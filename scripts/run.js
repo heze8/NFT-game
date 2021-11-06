@@ -11,6 +11,16 @@ const main = async () => {
     );
     await gameContract.deployed();
     console.log("Contract deployed to:", gameContract.address);
+    let txn;
+    // We only have three characters.
+    // an NFT w/ the character at index 2 of our array.
+    txn = await gameContract.mintCharacterNFT(2);
+    await txn.wait();
+
+    // Get the value of the NFT's URI.
+    //"go get me the data inside the NFT with tokenId 1", which would be the first NFT minted. And, it should give me back everything like: my character's name, my character's current hp, etc.
+    let returnedTokenUri = await gameContract.tokenURI(1);
+    console.log("Token URI:", returnedTokenUri);
   };
   
   const runMain = async () => {
