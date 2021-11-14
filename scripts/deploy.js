@@ -15,26 +15,7 @@ const main = async () => {
     );
     await gameContract.deployed();
     console.log("Contract deployed to:", gameContract.address);
-    
-     
-    let txn;
-    txn = await gameContract.mintCharacterNFT(0);
-    await txn.wait();
-    console.log("Minted NFT #1");
-
-    txn = await gameContract.mintCharacterNFT(2);
-    await txn.wait();
-    console.log("Minted NFT #2");
-
-    txn = await gameContract.mintCharacterNFT(1);
-    await txn.wait();
-    console.log("Minted NFT #3");
-
-    txn = await gameContract.attackBoss();
-    await txn.wait();
-
-    console.log("Done deploying and minting!");
-    
+        
     // Get the value of the NFT's URI.
     //"go get me the data inside the NFT with tokenId 1", which would be the first NFT minted. And, it should give me back everything like: my character's name, my character's current hp, etc.
     let returnedTokenUri = await gameContract.tokenURI(1);
